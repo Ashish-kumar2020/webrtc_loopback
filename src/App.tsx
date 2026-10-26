@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./App.css";
 import { VideoSource } from "./VideoSource";
-import { createLoopBack } from "./webrtc";
+import { createLoopBack ,DEFAULT_MAX_BITRATE} from "./webrtc";
 
 type VideoProfile = "720p" | "360p";
 
@@ -204,6 +204,7 @@ function exportCsv(measurements: Measurement[]) {
 
 function App() {
   const [profile, setProfile] = useState<VideoProfile>("720p");
+  const [maxBitrate, setMaxBitrate] = useState(DEFAULT_MAX_BITRATE);
   const [sourceStream, setSourceStream] = useState<MediaStream | null>(null);
   const [status, setStatus] = useState("Not Connected");
   const [isConnecting, setIsConnecting] = useState(false);

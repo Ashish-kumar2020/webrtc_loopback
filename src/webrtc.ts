@@ -9,9 +9,11 @@ const RTC_CONFIGURATION: RTCConfiguration = {
 };
 
 
+export const DEFAULT_MAX_BITRATE = 6_000_000;
+
 export async function createLoopBack(
   stream: MediaStream,
-
+  maxBitrate: number = DEFAULT_MAX_BITRATE
 ): Promise<LoopBackConnection> {
   if (!stream || stream.getTracks().length === 0) {
     throw new Error("The video source stream is not available.");
